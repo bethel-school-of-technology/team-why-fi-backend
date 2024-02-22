@@ -1,8 +1,11 @@
+using backend.Migrations;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddSqlite<LocationDbContext>("Data Source=SqlDatabase.db");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
