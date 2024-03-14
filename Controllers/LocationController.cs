@@ -1,6 +1,6 @@
 using backend.Models;
 using backend.Repositories;
-// using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,7 +37,7 @@ namespace backend.Controllers
         }
 
         [HttpPost]
-        // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult<Post> CreatePost(Post post) 
         {
             if (!ModelState.IsValid || post == null) {
@@ -49,7 +49,7 @@ namespace backend.Controllers
 
         [HttpPut]
         [Route("{PostId:int}")]
-        // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult<Post> UpdatePost(Post post) 
         {
             if (!ModelState.IsValid || post == null) {
@@ -60,7 +60,7 @@ namespace backend.Controllers
 
         [HttpDelete]
         [Route("{PostId:int}")]
-        // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult DeletePost(int postId) 
         {
             _locationRepository.DeletePostById(postId); 
