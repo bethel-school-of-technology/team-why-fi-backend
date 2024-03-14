@@ -1,7 +1,7 @@
 using System.Text;
 using backend.Migrations;
 using backend.Repositories;
-// using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -36,29 +36,29 @@ builder.Services.AddSwaggerGen(c => {
 
 builder.Services.AddSqlite<LocationDbContext>("Data Source=SqlDatabase.db");
 builder.Services.AddScoped<ILocationRepository, LocationRepository>();
-// builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
-// var secretKey = builder.Configuration["TokenSecret"];
+var secretKey = builder.Configuration["TokenSecret"];
 
-// builder.Services.AddAuthentication(options => {
-//     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-// })
-// .AddJwtBearer(cfg =>
-// {
-//     cfg.RequireHttpsMetadata = true;
-//     cfg.SaveToken = true;
-//     cfg.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
-//     {
-//         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
-//         ValidateAudience = false,
-//         ValidateIssuer = false,
-//         ValidateLifetime = false,
-//         RequireExpirationTime = false,
-//         ClockSkew = TimeSpan.Zero,
-//         ValidateIssuerSigningKey = true
-//     };
-// });
+builder.Services.AddAuthentication(options => {
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(cfg =>
+{
+    cfg.RequireHttpsMetadata = true;
+    cfg.SaveToken = true;
+    cfg.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+    {
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
+        ValidateAudience = false,
+        ValidateIssuer = false,
+        ValidateLifetime = false,
+        RequireExpirationTime = false,
+        ClockSkew = TimeSpan.Zero,
+        ValidateIssuerSigningKey = true
+    };
+});
 
 var app = builder.Build();
 
