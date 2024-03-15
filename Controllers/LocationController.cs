@@ -27,6 +27,7 @@ namespace backend.Controllers
 
         [HttpGet]
         [Route("{PostId:int}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult<Post> GetPostById(int postId) 
         {
             var post = _locationRepository.GetPostById(postId);

@@ -34,9 +34,9 @@ public class LocationRepository : ILocationRepository
         return _context.Post.ToList();
     }
 
-    public Post? GetPostById(int PostId)
+    public Post? GetPostById(int postId)
     {
-        return _context.Post.SingleOrDefault(c => c.PostId == PostId);
+        return _context.Post.SingleOrDefault(c => c.PostId ==postId);
     }
 
     public Post? UpdatePost(Post newPost)
@@ -44,6 +44,7 @@ public class LocationRepository : ILocationRepository
         var originalPost = _context.Post.Find(newPost.PostId);
         if (originalPost != null) {
             originalPost.Message = newPost.Message;
+            originalPost.ImgUrl = newPost.ImgUrl;
             _context.SaveChanges();
         }
         return originalPost;

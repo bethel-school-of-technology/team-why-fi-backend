@@ -21,6 +21,7 @@ public class LocationDbContext : DbContext
         {
             entity.HasKey(e => e.PostId);
             entity.Property(e => e.Message).IsRequired();
+            entity.Property(e => e.ImgUrl);
         });
 
 
