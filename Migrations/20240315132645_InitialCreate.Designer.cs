@@ -10,7 +10,7 @@ using backend.Migrations;
 namespace finalbackend.Migrations
 {
     [DbContext(typeof(LocationDbContext))]
-    [Migration("20240223131914_InitialCreate")]
+    [Migration("20240315132645_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -24,6 +24,9 @@ namespace finalbackend.Migrations
                     b.Property<int>("PostId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("ImgUrl")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Message")
                         .IsRequired()
