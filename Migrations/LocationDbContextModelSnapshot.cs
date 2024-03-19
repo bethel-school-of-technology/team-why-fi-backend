@@ -29,6 +29,10 @@ namespace finalbackend.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("locationId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("PostId");
 
                     b.ToTable("Post");
