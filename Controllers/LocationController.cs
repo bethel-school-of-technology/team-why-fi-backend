@@ -26,8 +26,8 @@ namespace backend.Controllers
         }
 
         [HttpGet]
-        [Route("{PostId:int}")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Route("{postId:int}")]
+        // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult<Post> GetPostById(int postId) 
         {
             var post = _locationRepository.GetPostById(postId);
@@ -38,7 +38,7 @@ namespace backend.Controllers
         }
 
         [HttpPost]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult<Post> CreatePost(Post post) 
         {
             if (!ModelState.IsValid || post == null) {
@@ -50,7 +50,7 @@ namespace backend.Controllers
 
         [HttpPut]
         [Route("{PostId:int}")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult<Post> UpdatePost(Post post) 
         {
             if (!ModelState.IsValid || post == null) {
@@ -60,8 +60,8 @@ namespace backend.Controllers
         }
 
         [HttpDelete]
-        [Route("{PostId:int}")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Route("{postId:int}")]
+        // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult DeletePost(int postId) 
         {
             _locationRepository.DeletePostById(postId); 

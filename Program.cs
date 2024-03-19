@@ -69,7 +69,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors(builder => builder
-    .WithOrigins("http://localhost:5256", "http://localhost:3000")
+    .WithOrigins("http://localhost:5256", "http://localhost:4200")
     .AllowAnyHeader()
     .AllowAnyMethod());
 app.UseHttpsRedirection();
