@@ -20,6 +20,7 @@ public class LocationDbContext : DbContext
         modelBuilder.Entity<Post>(entity =>
         {
             entity.HasKey(e => e.PostId);
+            entity.Property(e => e.locationId).IsRequired();
             entity.Property(e => e.Message).IsRequired();
             entity.Property(e => e.ImgUrl);
         });

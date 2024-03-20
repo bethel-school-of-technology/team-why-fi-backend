@@ -45,6 +45,7 @@ public class LocationRepository : ILocationRepository
         if (originalPost != null) {
             originalPost.Message = newPost.Message;
             originalPost.ImgUrl = newPost.ImgUrl;
+            originalPost.locationId = newPost.locationId;
             _context.SaveChanges();
         }
         return originalPost;

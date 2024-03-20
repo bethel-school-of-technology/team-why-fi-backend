@@ -10,7 +10,7 @@ using backend.Migrations;
 namespace finalbackend.Migrations
 {
     [DbContext(typeof(LocationDbContext))]
-    [Migration("20240315132645_InitialCreate")]
+    [Migration("20240319232148_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -29,6 +29,10 @@ namespace finalbackend.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("locationId")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
